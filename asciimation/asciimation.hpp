@@ -29,7 +29,7 @@ class Asciimation {
 public:
     static const size_t MOVIE_WIDTH = 80;
     static const size_t MOVIE_HEIGHT = 40; 
-    Asciimation(char* inputFile, int topLeftColumn, int topLeftRow);
+    Asciimation(string inputFile, int topLeftRow, int topLeftColumn);
 
     /**
      * \brief Creates the current display showing the sprite
