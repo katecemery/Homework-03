@@ -54,6 +54,7 @@ public:
 
 private:
     // The sprite to display in this movie.
+   Sprite sprite_;
 
     // The characters to display on the screen.
    char characterDisplayCurr[MOVIE_HEIGHT*MOVIE_WIDTH];
