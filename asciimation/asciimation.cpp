@@ -21,6 +21,11 @@ using std::string;
 using std::cerr;
 using std::endl;
 
+Asciimation::Asciimation(string inputFile, int topLeftRow, int topLeftColumn)
+{ 
+    sprite_ = Sprite(inputFile,topLeftRow,topLeftColumn);
+}
+
 void Asciimation::updateContents()
 {
     // Clear contents by writing a space everywhere, so that we don't keep
