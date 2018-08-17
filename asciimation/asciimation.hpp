@@ -28,7 +28,7 @@ using std::string;
 class Asciimation {
 public:
     static const size_t MOVIE_WIDTH = 80;
-    static const size_t MOVIE_HEIGHT = 40;
+    static const size_t MOVIE_HEIGHT = 40; 
 
     /**
      * \brief Creates the current display showing the sprite
@@ -56,6 +56,7 @@ private:
     // The sprite to display in this movie.
 
     // The characters to display on the screen.
+   char characterDisplayCurr[MOVIE_HEIGHT*MOVIE_WIDTH];
 };
 
 #endif // ifndef ASCIIMATION_HPP_INCLUDED
