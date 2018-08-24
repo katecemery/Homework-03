@@ -63,7 +63,7 @@ int Sprite::getTopLeftRow()
 
 char Sprite::getCharAt(int row, int col)
 {
-    return contents_[((row-1)*SPRITE_WIDTH + col) -1]; 
+    return contents_[((row)*SPRITE_WIDTH + col)]; 
 }
 
 void setLocation(int x, int y){

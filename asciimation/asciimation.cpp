@@ -11,6 +11,7 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include <stdexcept>
 
 #include "movie-helper.hpp"
@@ -24,6 +25,14 @@ using std::endl;
 Asciimation::Asciimation(string inputFile, int topLeftRow, int topLeftColumn)
 { 
     sprite_ = Sprite(inputFile,topLeftRow,topLeftColumn);
+} 
+
+void Asciimation::clearContents()
+{ 
+    size_t area = MOVIE_WIDTH*MOVIE_HEIGHT; 
+    for(size_t i = 0; i < area; ++i) {
+        frame_[i] = ' '; 
+    }
 }
 
 void Asciimation::updateContents()
@@ -31,10 +40,10 @@ void Asciimation::updateContents()
     // Clear contents by writing a space everywhere, so that we don't keep
     // old contents around when the display updates.
 
-    // TODO: Call clearContents() to overwrite all of the old content
+    //Call clearContents() to overwrite all of the old content
     // with spaces
-    //clearContents();
-
+    clearContents();
+    
     // TODO: Call moveRight() (once it exists).
     //moveRight(); 
 
@@ -48,10 +57,16 @@ void Asciimation::updateContents()
         ++spriteRow) {
         for(size_t spriteCol = 0; spriteCol < Sprite::SPRITE_WIDTH; 
             ++spriteCol) {
-            // TODO: Fill in this loop so that the contents of the sprite
+            // Fill in this loop so that the contents of the sprite
             // for this location end up in the right spot in the 
             // asciimation object's contents.
+            size_t topLeftRow = sprite_.getTopLeftRow();
+            size_t topLeftColumn = sprite_.getTopLeftColumn(); 
+
+            movieRow = spriteRow + topleftRow; 
+            movieColumn = spriteColumn + topLeftColumn; 
             
+            frame_[movieRow*MOVIE_WIDTH + movieCol] = sprite_.getCharAt(spriteRow,spriteColumn);
         }
     }
 
@@ -98,5 +113,12 @@ void Asciimation::exportSingleFrame(string fileName)
     // Loop through all of the characters in the current character array and
     // copy them to an ASCII text file; then, export (save) that file.
 
-    // TODO: Fill in the implementation of exportSingleFrame
+    //Fill in the implementation of exportSingleFrame
+    ofstream outputfile(fileName);
+    for(size_t movieRow = 0; i < MOVIE_HEIGHT; ++movieRow) {
+        for(size_t movieColumn = 0; j < MOVIE_WIDTH; ++movieColumn) { 
+            outputfile << frame_[movieRow*MOVIE_WIDTH + movieCol];
+        }  
+        outputfile << endl;       
+    }
 }

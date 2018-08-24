@@ -58,7 +58,7 @@ private:
    Sprite sprite_;
 
     // The characters to display on the screen.
-   char characterDisplayCurr[MOVIE_HEIGHT*MOVIE_WIDTH];
+   char frame_[MOVIE_HEIGHT*MOVIE_WIDTH]; //previously named currDiplayedChar
 };
 
 #endif // ifndef ASCIIMATION_HPP_INCLUDED
