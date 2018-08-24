@@ -46,8 +46,13 @@ Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn)
 
     // TODO: Fill in this part so that it puts values into the contents_ of
     // this Sprite object. You can  use inputFile.get() to get one character
-    // at a time from the file.
-
+    // at a time from the file
+    
+    for(size_t spriteRow = 0; spriteRow < SPRITE_HEIGHT; ++spriteRow) {
+        for(size_t spriteColumn = 0; spriteColumn < SPRITE_COLUMN; ++spriteColumn) { 
+            char charFromFile = inputFile.get(); 
+            contents_[spriteRow*SPRITE_HEIGHT + spriteColumn]= charFromFile; 
+        }  
     inputFile.close();
 }
 
