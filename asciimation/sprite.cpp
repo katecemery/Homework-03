@@ -66,8 +66,8 @@ char Sprite::getCharAt(int row, int col)
     return contents_[((row)*SPRITE_WIDTH + col)]; 
 }
 
-void setLocation(int x, int y){
-    topLeftRow = x;
-    ropLeftColumn = y;
+void Sprite::setLocation(int x, int y){
+    topLeftRow_ = x;
+    topLeftColumn_ = y;
 }
 
