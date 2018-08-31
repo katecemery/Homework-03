@@ -23,8 +23,8 @@ using std::cerr;
 using std::endl;
 using std::ofstream;
 
-Asciimation::Asciimation(string inputFile, int topLeftRow, int topLeftColumn) : 
-sprite_(inputFile,topLeftRow,topLeftColumn)
+Asciimation::Asciimation(string inputFile, int topLeftRow, int topLeftColumn, bool scrolling) : 
+sprite_(inputFile,topLeftRow,topLeftColumn,scrolling)
 { 
 } 
 
@@ -34,6 +34,18 @@ void Asciimation::clearContents()
     for(size_t i = 0; i < area; ++i) {
         frame_[i] = ' '; 
     }
+}
+
+void Asciimation::moveRight() { 
+    int topLeftRow = sprite_.getTopLeftRow();
+    int topLeftColumn = sprite_.getTopLeftColumn();
+    if(topLeftColumn + 1 ==  MOVIE_WIDTH) {
+        topLeftColumn = 0;
+    }
+    else { 
+        topLeftColumn++;
+    }
+    sprite_.setLocation(topLeftRow,topLeftColumn);
 }
 
 void Asciimation::updateContents()
@@ -46,7 +58,9 @@ void Asciimation::updateContents()
     clearContents();
     
     // TODO: Call moveRight() (once it exists).
-    //moveRight(); 
+    if(sprite_.getScrolling()) {
+        moveRight();
+    }
 
     // Loop through all of the characters in the sprite and copy them to
     // the right spot in the movie's character array.
@@ -65,7 +79,7 @@ void Asciimation::updateContents()
             size_t topLeftColumn = sprite_.getTopLeftColumn(); 
 
             movieRow = spriteRow + topLeftRow; 
-            movieColumn = spriteColumn + topLeftColumn; 
+            movieColumn = (spriteColumn + topLeftColumn) % MOVIE_WIDTH; 
             
             frame_[movieRow*MOVIE_WIDTH + movieColumn] = sprite_.getCharAt(spriteRow,spriteColumn);
         }
@@ -92,6 +106,7 @@ void Asciimation::generateAnimation(string framesDirectory,
     for (int f = 0; f < totalFrames; ++f) {
         // Copy contents to the screen
         updateContents();
+        printFrame();
 
         // copy the movie's characters to an ASCII art text file
         string frameNumberStr = std::to_string(f);

@@ -18,9 +18,8 @@
 
 void makeOurMovie()
 {
-    Asciimation ascii("spriteImages/mystery1.txt",15,10);
+    Asciimation ascii("spriteImages/mystery1.txt",15,10,true);
     ascii.generateAnimation("frames/",60,20);
-    ascii.printFrame();
 }
 
 

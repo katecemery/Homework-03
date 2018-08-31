@@ -14,7 +14,8 @@
 #include <iostream>
 #include "sprite.hpp"
 
-Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn) : topLeftRow_(topLeftRow) , topLeftColumn_(topLeftColumn)
+Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn, bool scrolling) : topLeftRow_(topLeftRow) , topLeftColumn_(topLeftColumn), 
+shouldScroll_(scrolling)
 {
     ifstream inputFile(fname);
 
@@ -77,4 +78,10 @@ void Sprite::setLocation(int x, int y){
     topLeftColumn_ = y;
 }
 
+void Sprite::setScrolling(bool flag){
+    shouldScroll_ = flag; 
+}
 
+bool Sprite::getScrolling(){
+    return shouldScroll_; 
+}

@@ -29,7 +29,7 @@ class Asciimation {
 public:
     static const size_t MOVIE_WIDTH = 80;
     static const size_t MOVIE_HEIGHT = 40; 
-    Asciimation(string inputFile, int topLeftRow, int topLeftColumn);
+    Asciimation(string inputFile, int topLeftRow, int topLeftColumn, bool scrolling);
 
   void clearContents();
 
@@ -56,7 +56,8 @@ public:
     void exportSingleFrame(string fileName);
 
     void printFrame();
-    
+    void moveRight(); 
+
 private:
     // The sprite to display in this movie.
    Sprite sprite_;

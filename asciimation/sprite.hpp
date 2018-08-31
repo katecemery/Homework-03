@@ -44,11 +44,14 @@ public:
     int getTopLeftRow();
     char getCharAt(int row, int col);
     void setLocation(int x, int y);
+    void setScrolling(bool flag); 
+    bool getScrolling();
+
     /**
      * \brief Reads a text file containing the characters for a sprite.
      * \post Should populate the sprite's character array, but doesn't yet.
      */
-    Sprite(string fname, int row, int col);
+    Sprite(string fname, int row, int col, bool scrolling);
 
 private:
     int topLeftRow_; 
