@@ -21,10 +21,11 @@
 using std::string;
 using std::cerr;
 using std::endl;
+using std::ofstream;
 
-Asciimation::Asciimation(string inputFile, int topLeftRow, int topLeftColumn)
+Asciimation::Asciimation(string inputFile, int topLeftRow, int topLeftColumn) : 
+sprite_(inputFile,topLeftRow,topLeftColumn)
 { 
-    sprite_ = Sprite(inputFile,topLeftRow,topLeftColumn);
 } 
 
 void Asciimation::clearContents()
@@ -51,26 +52,24 @@ void Asciimation::updateContents()
     // the right spot in the movie's character array.
      
     size_t movieRow = 0;
-    size_t movieCol = 0;
+    size_t movieColumn = 0;
     
     for (size_t spriteRow = 0; spriteRow < Sprite::SPRITE_HEIGHT; 
         ++spriteRow) {
-        for(size_t spriteCol = 0; spriteCol < Sprite::SPRITE_WIDTH; 
-            ++spriteCol) {
+        for(size_t spriteColumn = 0; spriteColumn < Sprite::SPRITE_WIDTH; 
+            ++spriteColumn) {
             // Fill in this loop so that the contents of the sprite
             // for this location end up in the right spot in the 
             // asciimation object's contents.
             size_t topLeftRow = sprite_.getTopLeftRow();
             size_t topLeftColumn = sprite_.getTopLeftColumn(); 
 
-            movieRow = spriteRow + topleftRow; 
+            movieRow = spriteRow + topLeftRow; 
             movieColumn = spriteColumn + topLeftColumn; 
             
-            frame_[movieRow*MOVIE_WIDTH + movieCol] = sprite_.getCharAt(spriteRow,spriteColumn);
+            frame_[movieRow*MOVIE_WIDTH + movieColumn] = sprite_.getCharAt(spriteRow,spriteColumn);
         }
     }
-
-
 }
 
 /**
@@ -115,9 +114,9 @@ void Asciimation::exportSingleFrame(string fileName)
 
     //Fill in the implementation of exportSingleFrame
     ofstream outputfile(fileName);
-    for(size_t movieRow = 0; i < MOVIE_HEIGHT; ++movieRow) {
-        for(size_t movieColumn = 0; j < MOVIE_WIDTH; ++movieColumn) { 
-            outputfile << frame_[movieRow*MOVIE_WIDTH + movieCol];
+    for(size_t movieRow = 0; movieRow < MOVIE_HEIGHT; ++movieRow) {
+        for(size_t movieColumn = 0; movieColumn < MOVIE_WIDTH; ++movieColumn) { 
+            outputfile << frame_[movieRow*MOVIE_WIDTH + movieColumn];
         }  
         outputfile << endl;       
     }

@@ -31,7 +31,9 @@ public:
     static const size_t MOVIE_HEIGHT = 40; 
     Asciimation(string inputFile, int topLeftRow, int topLeftColumn);
 
-    /**
+  void clearContents();
+
+  /**
      * \brief Creates the current display showing the sprite
      * \post The current display contents are up to date and
      * ready to display to the screen.

@@ -14,7 +14,7 @@
 #include <iostream>
 #include "sprite.hpp"
 
-Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn)
+Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn) : topLeftRow_(topLeftRow) , topLeftColumn_(topLeftColumn)
 {
     ifstream inputFile(fname);
 
@@ -49,10 +49,11 @@ Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn)
     // at a time from the file
     
     for(size_t spriteRow = 0; spriteRow < SPRITE_HEIGHT; ++spriteRow) {
-        for(size_t spriteColumn = 0; spriteColumn < SPRITE_COLUMN; ++spriteColumn) { 
+        for(size_t spriteColumn = 0; spriteColumn < SPRITE_WIDTH; ++spriteColumn) { 
             char charFromFile = inputFile.get(); 
             contents_[spriteRow*SPRITE_HEIGHT + spriteColumn]= charFromFile; 
         }  
+	}
     inputFile.close();
 }
 

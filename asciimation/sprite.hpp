@@ -51,8 +51,8 @@ public:
     Sprite(string fname, int row, int col);
 
 private:
-    int topLeftColumn_;
     int topLeftRow_; 
+    int topLeftColumn_;
     char contents_[SPRITE_WIDTH * SPRITE_HEIGHT]; //holds contents of the image
 
 };
