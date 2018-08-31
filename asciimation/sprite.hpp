@@ -54,7 +54,7 @@ private:
     int topLeftRow_; 
     int topLeftColumn_;
     char contents_[SPRITE_WIDTH * SPRITE_HEIGHT]; //holds contents of the image
-
+    bool shouldScroll_; 
 };
 
 #endif // ifndef SPRITE_HPP_INCLUDED
