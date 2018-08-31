@@ -55,6 +55,8 @@ public:
      */
     void exportSingleFrame(string fileName);
 
+    void printFrame();
+    
 private:
     // The sprite to display in this movie.
    Sprite sprite_;

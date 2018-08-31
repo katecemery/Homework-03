@@ -121,3 +121,12 @@ void Asciimation::exportSingleFrame(string fileName)
         outputfile << endl;       
     }
 }
+
+void Asciimation::printFrame() { 
+for(size_t movieRow = 0; movieRow < MOVIE_HEIGHT; ++movieRow) {
+        for(size_t movieColumn = 0; movieColumn < MOVIE_WIDTH; ++movieColumn) { 
+            std::cout << frame_[movieRow*MOVIE_WIDTH + movieColumn];
+        }  
+       std::cout << endl;       
+    }
+}

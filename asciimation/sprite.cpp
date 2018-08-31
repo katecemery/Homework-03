@@ -51,7 +51,7 @@ Sprite::Sprite(string fname, int topLeftRow, int topLeftColumn) : topLeftRow_(to
     for(size_t spriteRow = 0; spriteRow < SPRITE_HEIGHT; ++spriteRow) {
         for(size_t spriteColumn = 0; spriteColumn < SPRITE_WIDTH; ++spriteColumn) { 
             char charFromFile = inputFile.get(); 
-            contents_[spriteRow*SPRITE_HEIGHT + spriteColumn]= charFromFile; 
+            contents_[spriteRow*SPRITE_WIDTH + spriteColumn] = charFromFile; 
         }  
 	}
     inputFile.close();
@@ -69,11 +69,12 @@ int Sprite::getTopLeftRow()
 
 char Sprite::getCharAt(int row, int col)
 {
-    return contents_[((row)*SPRITE_WIDTH + col)]; 
+    return contents_[row*SPRITE_WIDTH + col]; 
 }
 
 void Sprite::setLocation(int x, int y){
     topLeftRow_ = x;
     topLeftColumn_ = y;
 }
+
 
